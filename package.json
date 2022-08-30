@@ -1,0 +1,27 @@
+{
+  "name": "epichess-bot",
+  "version": "1.0.0",
+  "description": "Discord bot for Epichess, a chess club",
+  "main": "src/bot.js",
+  "scripts": {
+    "test": "node ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AhmedFr/Epichess-Bot.git"
+  },
+  "keywords": [],
+  "author": "AhmedFr",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AhmedFr/Epichess-Bot/issues"
+  },
+  "homepage": "https://github.com/AhmedFr/Epichess-Bot#readme",
+  "dependencies": {
+    "@discordjs/rest": "^1.1.0",
+    "chalk": "^4.1.2",
+    "discord-api-types": "^0.37.5",
+    "discord.js": "^14.3.0",
+    "dotenv": "^16.0.1"
+  }
+}
