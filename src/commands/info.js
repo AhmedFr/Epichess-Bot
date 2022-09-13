@@ -1,4 +1,5 @@
 const { SlashCommandBuilder } = require("discord.js");
+const { insertNewUser, getUser } = require("../database.js");
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -14,6 +15,16 @@ module.exports = {
     ),
   async execute(interaction) {
     const user = interaction.options.getUser("user");
+    const newUser = {
+      id: user.id,
+      name: user.username,
+      elo: 1000,
+      chesscom: "undefined",
+      lichess: "undefined"
+    }
+    insertNewUser(newUser);
+    // const userInfo = leaderboard.findOne({id: user.id});
+    console.log(newUser);
     await interaction.reply({ content: "Name 999\nChess.com: USERNAME\nLichess: USERNAME", ephemeral: true });
   },
 };
