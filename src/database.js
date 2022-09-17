@@ -18,14 +18,10 @@ async function getUserInfo(userId) {
       try {
           await dbClient.connect();
           const leaderboard = dbClient.db("epichess").collection("leaderboard");
-          const user = leaderboard.findOne({id: userId}, {_id: 0});
-          if (user === undefined) {
-              return ("User has no info.");
-            } else {
-            return user;
-        }
-    } finally {
-        await dbClient.close();
+          const user = await leaderboard.findOne({id: userId}, {_id: 0});
+          return user;
+        } finally {
+          await dbClient.close();
     };
 }
 
