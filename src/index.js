@@ -21,7 +21,12 @@ client.once('ready', () => {
 });
 
 client.on('interactionCreate', async interaction => {
-	if (!interaction.isChatInputCommand()) return;
+	// if (!interaction.isChatInputCommand()) return;
+
+	if (interaction.isButton() && interaction.customId === "accept") {
+		row.components[0].setDisabled(true);
+		interaction.reply({content: "A button has been clicked", ephemeral: true});
+	}
 
 	const command = interaction.client.commands.get(interaction.commandName);
 
