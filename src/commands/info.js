@@ -1,5 +1,5 @@
 const { SlashCommandBuilder } = require("discord.js");
-const { insertNewUser, getUser, getUserInfo } = require("../database.js");
+const { getUserInfo } = require("../database.js");
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -17,7 +17,7 @@ module.exports = {
     const user = interaction.options.getUser("user");
     const userInfo = await getUserInfo(user.id);
     if (userInfo) {
-      await interaction.reply({ content: `Name: ${userInfo.name}\nElo: ${userInfo.elo}\nChess.com: ${userInfo.chesscom}\nLichess: ${userInfo.lichess}`, ephemeral: true });
+      await interaction.reply({ content: `Name: ${user.username}\nElo: ${userInfo.elo}\nChess.com: ${userInfo.chesscom}\nLichess: ${userInfo.lichess}`, ephemeral: true });
     } else {
       await interaction.reply({ content: "We have no information on this user.", ephemeral: true });
     }

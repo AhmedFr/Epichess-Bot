@@ -1,4 +1,5 @@
 const { SlashCommandBuilder } = require("discord.js");
+const { updateUsername } = require("../database.js");
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -17,7 +18,13 @@ module.exports = {
         .setRequired(true)
     ),
   async execute(interaction) {
-    const user = interaction.options.getUser('oponent'); 
-    await interaction.reply(`Adding your username...`);
+    const platform = interaction.options.getString("platform");
+    const username = interaction.options.getString("username");
+    if (platform != "chesscom" && platform != "lichess") {
+      await interaction.reply({ content: `Bad platform given. (chesscom or lichess)`, ephemeral: true });
+    } else {
+      const message = await updateUsername(interaction.user.id, platform, username);
+      await interaction.reply({ content: `${message}`, ephemeral: true });
+    }
   },
 };
