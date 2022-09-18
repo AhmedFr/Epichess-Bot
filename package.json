@@ -4,7 +4,8 @@
   "description": "Discord bot for Epichess, a chess club",
   "main": "src/index.js",
   "scripts": {
-    "test": "node ."
+    "test": "node .",
+    "start": "node ."
   },
   "repository": {
     "type": "git",
